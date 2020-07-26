@@ -9,7 +9,7 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v2
     - name: Checkout submodules
-      uses: textbook/github-checkout-submodule-action@master
+      uses: textbook/git-checkout-submodule-action@master
     - name: Compile Hugo
       uses: srt32/hugo-action@master
       with:
