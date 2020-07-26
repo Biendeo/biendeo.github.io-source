@@ -1,0 +1,26 @@
+name: Auto-Publish
+on:
+  push:
+    branches: [ master ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+    - name: Checkout submodules
+      uses: textbook/github-checkout-submodule-action@master
+    - name: Compile Hugo
+      uses: srt32/hugo-action@master
+      with:
+        args: -D
+    - name: Get commit message
+      run: COMMIT_MESSAGE=$(git log -1 --pretty=%B)
+    - name: Change to deployment repo
+      run: cd $GITHUB_WORKSPACE/public
+    - name: Note the file changes
+      run: git diff --compact-summary
+    - name: Commit to deployment repo
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: $COMMIT_MESSAGE
