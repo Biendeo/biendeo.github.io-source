@@ -23,7 +23,7 @@ jobs:
         git diff --compact-summary
         echo ::set-env name=GIT_DIFF::$(git diff --compact-summary)
     - name: Commit to deployment repo
-      if: env.GIT_DIFF != ""
+      if: ${{ env.GIT_DIFF != "" }}
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: ${{ env.COMMIT_MESSAGE }}
