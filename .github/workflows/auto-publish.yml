@@ -19,8 +19,11 @@ jobs:
     - name: Change to deployment repo
       run: cd $GITHUB_WORKSPACE/public
     - name: Note the file changes
-      run: git diff --compact-summary
+      run: |
+        git diff --compact-summary
+        GIT_DIFF=$(git diff --compact-summary)
     - name: Commit to deployment repo
+      if: ${{ -n $GIT_DIFF }}
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: $COMMIT_MESSAGE
