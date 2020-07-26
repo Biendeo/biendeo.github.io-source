@@ -22,7 +22,7 @@ jobs:
         git diff --compact-summary
         GIT_DIFF=$(git diff --compact-summary)
         if [ -n "$GIT_DIFF" ]; then
-          ls -la /home/runner/work/biendeo.github.io-source/biendeo.github.io-source/.git/modules/public/index.lock
+          ls -la /home/runner/work/biendeo.github.io-source/biendeo.github.io-source/.git/modules/public/
           git add -A
           git commit -m "$COMMIT_MESSAGE"
           git push
