@@ -1,0 +1,8 @@
+[submodule "public"]
+	path = public
+	url = https://github.com/Biendeo/biendeo.github.io.git
+	branch = master
+[submodule "themes/paper"]
+	path = themes/paper
+	url = https://github.com/nanxiaobei/hugo-paper
+	branch = master
