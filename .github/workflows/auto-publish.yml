@@ -16,6 +16,7 @@ jobs:
         args: -D
     - name: Commit to deployment repo if changes
       run: |
+        sleep 10
         cd $GITHUB_WORKSPACE
         COMMIT_MESSAGE=$(git log -1 --pretty=%B)
         cd $GITHUB_WORKSPACE/public
