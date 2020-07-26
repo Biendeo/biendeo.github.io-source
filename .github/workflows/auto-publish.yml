@@ -14,13 +14,6 @@ jobs:
       uses: srt32/hugo-action@master
       with:
         args: -D
-    - name: Get commit message
-      run: echo ::set-env name=COMMIT_MESSAGE::$(git log -1 --pretty=%B)
-    - name: Note the file changes
-      run: |
-        cd $GITHUB_WORKSPACE/public
-        git diff --compact-summary
-        echo ::set-env name=GIT_DIFF::$(git diff --compact-summary)
     - name: Commit to deployment repo if changes
       run: |
         cd $GITHUB_WORKSPACE
@@ -29,6 +22,7 @@ jobs:
         git diff --compact-summary
         GIT_DIFF=$(git diff --compact-summary)
         if [ -n "$GIT_DIFF" ]; then
+          ls -la /home/runner/work/biendeo.github.io-source/biendeo.github.io-source/.git/modules/public/index.lock
           git add -A
           git commit -m "$COMMIT_MESSAGE"
           git push
