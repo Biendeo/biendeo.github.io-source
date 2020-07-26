@@ -25,7 +25,7 @@ jobs:
       if: env.GIT_DIFF != ''
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        repository: $GITHUB_WORKSPACE/public
+        repository: public
         commit_message: ${{ env.COMMIT_MESSAGE }}
         commit_user_name: Thomas Moffet
         commit_user_email: pantherman1996@gmail.com
