@@ -15,15 +15,15 @@ jobs:
       with:
         args: -D
     - name: Get commit message
-      run: COMMIT_MESSAGE=$(git log -1 --pretty=%B)
+      run: echo ::set-env name=COMMIT_MESSAGE::$(git log -1 --pretty=%B)
     - name: Change to deployment repo
       run: cd $GITHUB_WORKSPACE/public
     - name: Note the file changes
       run: |
         git diff --compact-summary
-        GIT_DIFF=$(git diff --compact-summary)
+        echo ::set-env name=GIT_DIFF::$(git diff --compact-summary)
     - name: Commit to deployment repo
-      if: ${{ -n $GIT_DIFF }}
+      if: env.GIT_DIFF != ""
       uses: stefanzweifel/git-auto-commit-action@v4
       with:
-        commit_message: $COMMIT_MESSAGE
+        commit_message: ${{ env.COMMIT_MESSAGE }}
