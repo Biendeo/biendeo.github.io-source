@@ -6,3 +6,7 @@
 	path = themes/paper
 	url = https://github.com/nanxiaobei/hugo-paper
 	branch = master
+[submodule "themes/academic"]
+	path = themes/academic
+	url = https://github.com/gcushen/hugo-academic.git
+	branch = master
