@@ -31,7 +31,7 @@ education:
   - course: Bachelor of Software Engineering (Honours)
     institution: Univeristy of New South Wales
     year: 2020
-  - course: Higher School Certifacte
+  - course: Higher School Certificate
     institution: Sydney Grammar School
     year: 2014
 
